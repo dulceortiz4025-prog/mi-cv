@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Vitae - Dulce Ortiz Torres</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #f1f5f9;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --primary-subtle: #eff6ff;
+      --border-color: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+
+    body.dark-theme {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --primary-subtle: #1e293b;
+      --border-color: #334155;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      --badge-bg: #1e3a8a;
+      --badge-text: #93c5fd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 40px;
+    }
+
+    .action-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto 30px auto;
+      border-radius: 0 0 12px 12px;
+    }
+
+    body.dark-theme .action-bar {
+      background-color: rgba(30, 41, 59, 0.85);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+    }
+
+    .btn-secondary {
+      background-color: var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      filter: brightness(0.95);
+    }
+
+    .cv-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .header-banner {
+      height: 120px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    }
+
+    .header-content {
+      padding: 0 30px 30px 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 640px) {
+      .header-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-end;
+        gap: 24px;
+      }
+    }
+
+    .profile-img-container {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid var(--card-bg);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      margin-top: -70px;
+      overflow: hidden;
+      background-color: #cbd5e1;
+      flex-shrink: 0;
+    }
+
+    .profile-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .profile-details {
+      margin-top: 16px;
+      flex-grow: 1;
+    }
+
+    .profile-details h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .profile-details h2 {
+      font-size: 1.1rem;
+      color: var(--primary-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-layout-2 {
+        grid-template-columns: 2fr 1fr;
+      }
+      .grid-layout-equal {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .card-title i {
+      color: var(--primary-light);
+    }
+
+    .goal-card {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 100%);
+      color: #ffffff;
+    }
+
+    .goal-card .card-title {
+      color: #ffffff;
+      border-bottom-color: rgba(255,255,255,0.15);
+    }
+
+    .goal-card .card-title i {
+      color: #93c5fd;
+    }
+
+    .goal-card p, .goal-card li {
+      color: #e2e8f0;
+    }
+
+    .skill-item {
+      margin-bottom: 16px;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background-color: var(--border-color);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+      border-radius: 999px;
+      transition: width 1s ease-in-out;
+    }
+
+    .badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -27px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--primary-light);
+      border: 2px solid var(--card-bg);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .item-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .item-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .item-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .delete-btn {
+      color: #ef4444;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.75rem;
+      margin-top: 4px;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      padding: 24px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      outline: none;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+      .card, .header-card {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-bar no-print">
+    <div style="font-weight: 600; font-size: 0.9rem;">
+      <i class="fa-solid fa-file-invoice text-brand" style="color:#2563eb; margin-right: 6px;"></i> CV Dinámico
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button onclick="openModal('experience')" class="btn btn-primary">
+        <i class="fa-solid fa-plus"></i> Agregar Info
+      </button>
+      <button onclick="window.print()" class="btn btn-secondary">
+        <i class="fa-solid fa-print"></i> Imprimir / PDF
+      </button>
+      <button onclick="toggleTheme()" class="btn btn-secondary" id="themeBtn" title="Cambiar tema">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="cv-container">
+    
+    <header class="header-card">
+      <div class="header-banner"></div>
+      <div class="header-content">
+        <div class="profile-img-container">
+          <img src="WhatsApp Image 2026-10-06 at 7.57.06 AM.jpeg" 
+               onerror="this.onerror=null; this.src='https://placehold.co/300x300/1e3a8a/ffffff?text=Dulce+Ortiz';" 
+               alt="Dulce Ortiz Torres">
+        </div>
+        <div class="profile-details">
+          <h1>Dulce Ortiz Torres</h1>
+          <h2>Ingeniera en Negocios | 23 años</h2>
+          <div class="contact-badge">
+            <i class="fa-solid fa-envelope" style="color: #3b82f6;"></i>
+            <a href="mailto:dortizt378@gmail.com" style="color: inherit; text-decoration: none;">dortizt378@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid-layout grid-layout-2">
+      <!-- Perfil Profesional -->
+      <section class="card">
+        <h3 class="card-title">
+          <i class="fa-solid fa-user-tie"></i> Perfil Profesional
+        </h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Ingeniera en Negocios con un enfoque proactivo y altamente orientado a resultados. Destaco por mi liderazgo colaborativo en el <strong>trabajo en equipo</strong> y una rápida y efectiva <strong>resolución de problemas empresariales</strong>. Cuento con sólidas habilidades de análisis de datos y dominio técnico de software para optimizar procesos en el entorno corporativo.
+        </p>
+      </section>
+
+      <!-- Metas Laborales -->
+      <section class="card goal-card">
+        <h3 class="card-title">
+          <i class="fa-solid fa-bullseye"></i> Metas Laborales
+        </h3>
+        <ul style="padding-left: 18px; font-size: 0.9rem;">
+          <li style="margin-bottom: 10px;">Dominar el idioma Inglés al <strong>100% (C2 / Bilingüe)</strong>.</li>
+          <li>Desempeñar cargos corporativos y liderar proyectos estratégicos en el <strong>extranjero</strong>.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="grid-layout grid-layout-equal">
+      <!-- Habilidades Técnicas -->
+      <section class="card">
+        <h3 class="card-title">
+          <i class="fa-solid fa-laptop-code"></i> Habilidades Técnicas
+        </h3>
+        
+        <div class="skill-item">
+          <div class="skill-info">
+            <span>Microsoft Excel</span>
+            <span style="color: var(--primary-light);">Medio / Avanzado (85%)</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-info">
+            <span>Técnicas en Software Empresarial</span>
+            <span style="color: var(--primary-light);">80%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 80%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-info">
+            <span>Inglés (En preparación)</span>
+            <span style="color: var(--primary-light);">70% → Meta 100%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 70%;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fortalezas Clave -->
+      <section class="card">
+        <h3 class="card-title">
+          <i class="fa-solid fa-star"></i> Fortalezas Clave
+        </h3>
+        <div class="badge-list">
+          <span class="badge">Trabajo en Equipo</span>
+          <span class="badge">Resolución Rápida de Problemas</span>
+          <span class="badge">Pensamiento Analítico</span>
+          <span class="badge">Optimización de Procesos</span>
+          <span class="badge">Adaptabilidad</span>
+          <span class="badge">Visión Internacional</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="grid-layout grid-layout-equal">
+      <!-- Experiencia Laboral -->
+      <section class="card">
+        <h3 class="card-title">
+          <i class="fa-solid fa-briefcase"></i> Experiencia Laboral
+        </h3>
+        <div id="experienceTimeline" class="timeline">
+          <!-- Dynamic Items inserted via JS -->
+        </div>
+        <button onclick="openModal('experience')" class="btn btn-secondary no-print" style="margin-top: 16px; width: 100%; justify-content: center;">
+          <i class="fa-solid fa-plus"></i> Agregar Experiencia
+        </button>
+      </section>
+
+      <!-- Formación Académica -->
+      <section class="card">
+        <h3 class="card-title">
+          <i class="fa-solid fa-graduation-cap"></i> Formación Académica
+        </h3>
+        <div id="educationTimeline" class="timeline">
+          <!-- Dynamic Items inserted via JS -->
+        </div>
+        <button onclick="openModal('education')" class="btn btn-secondary no-print" style="margin-top: 16px; width: 100%; justify-content: center;">
+          <i class="fa-solid fa-plus"></i> Agregar Formación
+        </button>
+      </section>
+    </div>
+
+  </div>
+
+  <div id="itemModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle" style="font-weight: 700;">Agregar Elemento</h3>
+        <button onclick="closeModal()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <form onsubmit="handleFormSubmit(event)">
+        <input type="hidden" id="itemType" value="experience">
+        <div class="form-group">
+          <label>Título / Cargo / Carrera</label>
+          <input type="text" id="inputTitle" class="form-control" placeholder="Ej. Ingeniera en Negocios" required>
+        </div>
+        <div class="form-group">
+          <label>Empresa / Institución</label>
+          <input type="text" id="inputSubtitle" class="form-control" placeholder="Ej. Empresa / Universidad" required>
+        </div>
+        <div class="form-group">
+          <label>Periodo / Fecha</label>
+          <input type="text" id="inputDate" class="form-control" placeholder="Ej. 2023 - Presente" required>
+        </div>
+        <div class="form-group">
+          <label>Descripción / Logros</label>
+          <textarea id="inputDesc" class="form-control" rows="3" placeholder="Resumen breve de actividades..."></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px;">
+          <button type="button" onclick="closeModal()" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // State storage for dynamic lists
+    const dataStore = {
+      experience: [
+        {
+          id: 1,
+          title: "Ingeniera en Negocios",
+          subtitle: "Proyectos & Operaciones Empresariales",
+          date: "2023 - Presente",
+          desc: "Análisis de datos corporativos, gestión en equipo y optimización rápida de problemas de operación."
+        }
+      ],
+      education: [
+        {
+          id: 1,
+          title: "Ingeniería en Negocios",
+          subtitle: "Título Profesional",
+          date: "Completado",
+          desc: "Formación integral en gestión estratégica, análisis cuantitativo y desarrollo de negocios."
+        }
+      ]
+    };
+
+    // Render Timeline Items
+    function renderLists() {
+      // Render Experience
+      const expContainer = document.getElementById('experienceTimeline');
+      expContainer.innerHTML = dataStore.experience.map(item => `
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="item-header">
+            <span class="item-title">${escapeHtml(item.title)}</span>
+            <span class="item-date">${escapeHtml(item.date)}</span>
+          </div>
+          <div class="item-subtitle">${escapeHtml(item.subtitle)}</div>
+          <div class="item-desc">${escapeHtml(item.desc)}</div>
+          <button class="delete-btn no-print" onclick="deleteItem('experience', ${item.id})">
+            <i class="fa-solid fa-trash"></i> Eliminar
+          </button>
+        </div>
+      `).join('');
+
+      // Render Education
+      const eduContainer = document.getElementById('educationTimeline');
+      eduContainer.innerHTML = dataStore.education.map(item => `
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="item-header">
+            <span class="item-title">${escapeHtml(item.title)}</span>
+            <span class="item-date">${escapeHtml(item.date)}</span>
+          </div>
+          <div class="item-subtitle">${escapeHtml(item.subtitle)}</div>
+          <div class="item-desc">${escapeHtml(item.desc)}</div>
+          <button class="delete-btn no-print" onclick="deleteItem('education', ${item.id})">
+            <i class="fa-solid fa-trash"></i> Eliminar
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Modal functions
+    function openModal(type) {
+      document.getElementById('itemType').value = type;
+      document.getElementById('modalTitle').textContent = type === 'experience' ? 'Agregar Experiencia' : 'Agregar Formación';
+      document.getElementById('itemModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('itemModal').classList.remove('active');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const type = document.getElementById('itemType').value;
+      const newItem = {
+        id: Date.now(),
+        title: document.getElementById('inputTitle').value,
+        subtitle: document.getElementById('inputSubtitle').value,
+        date: document.getElementById('inputDate').value,
+        desc: document.getElementById('inputDesc').value
+      };
+
+      dataStore[type].push(newItem);
+      renderLists();
+      closeModal();
+      e.target.reset();
+    }
+
+    function deleteItem(type, id) {
+      dataStore[type] = dataStore[type].filter(item => item.id !== id);
+      renderLists();
+    }
+
+    // Toggle Dark Mode
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+      const icon = document.querySelector('#themeBtn i');
+      if (document.body.classList.contains('dark-theme')) {
+        icon.className = 'fa-solid fa-sun';
+      } else {
+        icon.className = 'fa-solid fa-moon';
+      }
+    }
+
+    // Helper for security
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    // Init
+    window.onload = function() {
+      renderLists();
+    };
+  </script>
+</body>
+</html>
